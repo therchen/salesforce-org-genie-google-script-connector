@@ -1,0 +1,36 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "OAuth2",
+        "version": "41",
+        "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF"
+      },
+      {
+        "userSymbol": "Uri",
+        "version": "0",
+        "libraryId": "1mongzGjsBH9VxovAVyE0hkj1bo4UmA_jlNZNzDBRjLF0xT-igWMaFi9l",
+        "developmentMode": true
+      },
+      {
+        "userSymbol": "Loadash",
+        "version": "0",
+        "libraryId": "1t2VTxTAY9gDdlEvFQ67j_A9wsoi2MkF8tmnFTxGJsROjjPDDjwgS9GXL",
+        "developmentMode": true
+      },
+      {
+        "userSymbol": "Helper",
+        "version": "0",
+        "libraryId": "1cD-v9RyB0WmM4x9OOP2RAln5haV0930OGMD50E7IQRRcxwGlZ9ZDdSRV",
+        "developmentMode": true
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "webapp": {
+    "executeAs": "USER_ACCESSING",
+    "access": "ANYONE"
+  }
+}
