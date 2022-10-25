@@ -1,7 +1,7 @@
-var Client_Id = '3MVG9JEx.BE6yifNS6d9p7aKM3qwh0ygIVo8oAM2qC4OHQIb4TmmOttII8OIZJFBKEuWMhl0vPrVDp6sYzyl4';
-var Client_Secret = '341AD74BE5F1078B9A11ACC027633D078CA53C404FC3FD65904E93F3DC857C47';
-var App_Name = 'Org Genie';
-var Api_Version = 'v53.0';
+var Client_Id = '';
+var Client_Secret = '';
+var App_Name = 'XYZ';
+var Api_Version = 'v55.0';
 var Group_Size = '250';
 var loadash = Loadash.load();
 
