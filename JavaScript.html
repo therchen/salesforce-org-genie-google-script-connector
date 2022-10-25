@@ -1,0 +1,60 @@
+<script>
+  var ScriptService = function($q) {
+    var self = this; 
+    var promisify = function(key) {
+      return function() {      
+        var args = arguments;
+        return $q(function(resolve, reject) {
+          google.script.run
+            .withSuccessHandler(resolve)
+            .withFailureHandler(reject)
+            [key].apply(google.script.run, args);
+        });
+      };
+    };
+    angular.forEach(google.script.run, function(_, key) {
+      self[key] = promisify(key)
+    });
+  };
+  var SidebarController = function($scope, $window, script, intercom) {
+    var self = this;
+    self.$window = $window;
+    self.script = script;
+    self.email = $window.email;
+    self.isSignedIn = $window.isSignedIn;
+    $scope.$watch('sidebar.isSignedIn', function(isSignedIn) {
+      if (isSignedIn) {
+      } else {
+      }
+    });
+    intercom.on('oauthComplete', function(data) {
+      if (data.email === self.email) {
+        $scope.$apply(function() {
+          self.isSignedIn = data.isSignedIn;
+        });
+      }
+    });
+  };
+  SidebarController.prototype.signIn = function() {
+    var self = this;
+    self.script.getAuthorizationUrl().then(function(authorizationUrl) {
+      self.$window.open(authorizationUrl);
+    }, self.handleError);
+  };
+  SidebarController.prototype.signOut = function() {
+    var self = this;
+    self.script.signOut().then(function() {
+      self.isSignedIn = false;
+    }, self.handleError);
+  };
+  SidebarController.prototype.handleError = function(error) {
+    var self = this;
+    self.$window.alert(error);
+  };
+  var module = angular.module('sidebarApp', [])
+    .service('script', ScriptService)
+    .service('intercom', function() {
+      return Intercom.getInstance();
+    })
+    .controller('SidebarController', SidebarController);
+</script>
